@@ -1366,6 +1366,8 @@ public class DispatcherServlet extends FrameworkServlet {
 	 */
 	protected void render(ModelAndView mv, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Determine locale for request and apply it to the response.
+		logger.debug("Start render function at "+System.nanoTime());
+		System.out.println("start render fuction at "+startTime);
 		Locale locale =
 				(this.localeResolver != null ? this.localeResolver.resolveLocale(request) : request.getLocale());
 		response.setLocale(locale);
@@ -1405,6 +1407,8 @@ public class DispatcherServlet extends FrameworkServlet {
 			}
 			throw ex;
 		}
+		logger.debug("End render function at "+System.nanoTime());
+		System.out.println("end render fuction at "+startTime);
 	}
 
 	/**
