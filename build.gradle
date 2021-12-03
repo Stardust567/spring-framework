@@ -134,7 +134,7 @@ configure(allprojects) { project ->
 
 	repositories {
 		maven { url "https://repo.spring.io/libs-release" }
-		maven { url "https://repo.springsource.org/plugins-release" }
+		maven { url "https://repo.spring.io/plugins-release" }
 	}
 
 	dependencies {
