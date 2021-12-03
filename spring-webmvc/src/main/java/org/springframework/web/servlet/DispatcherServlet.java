@@ -1140,9 +1140,10 @@ public class DispatcherServlet extends FrameworkServlet {
 
 		// Did the handler return a view to render?
 		if (mv != null && !mv.wasCleared()) {
-			logger.debug("Start render at "+System.nanoTime());
+			long startAt = System.nanoTime();
+			logger.debug("Start render at "+startAt);
 			render(mv, request, response);
-			logger.debug("End render at "+System.nanoTime());
+			logger.debug("End render at "+System.nanoTime()+", use "+System.nanoTime()-startAt);
 			if (errorView) {
 				WebUtils.clearErrorRequestAttributes(request);
 			}
@@ -1395,6 +1396,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		if (logger.isTraceEnabled()) {
 			logger.trace("Rendering view [" + view + "] ");
 		}
+		
 		try {
 			if (mv.getStatus() != null) {
 				response.setStatus(mv.getStatus().value());
